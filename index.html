@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velox Market - Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/login.js" defer></script>
 </head>
 <body>
 
-    <!-- Caja grande con 2 lados -->
-    <div class="contenedor">
+    <main class="contenedor" id="vista-login">
 
         <!-- LADO IZQUIERDO: producto -->
         <div class="izquierda">
@@ -35,22 +35,34 @@
             <p class="gris">Ingresa para ver tu carrito y pedidos</p>
 
             <div class="sociales">
-                <button class="boton-social">Google</button>
-                <button class="boton-social">Apple ID</button>
+                <button type="button" class="boton-social">Google</button>
+                <button type="button" class="boton-social">Apple ID</button>
             </div>
 
             <p class="separador">O CON EMAIL</p>
 
-            <p><b>Correo Electrónico</b></p>
-            <input type="email" placeholder="cliente@compras.com">
+            <form id="form-login" novalidate>
+                <label for="usuario"><b>Correo Electrónico</b></label>
+                <input type="email" id="usuario" name="usuario" placeholder="cliente@compras.com" autocomplete="username">
 
-            <p><b>Contraseña</b></p>
-            <input type="password" placeholder="Contraseña">
+                <label for="password"><b>Contraseña</b></label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="current-password">
 
-            <button class="boton-ingresar">Ingresar a mi Cuenta</button>
+                <button type="submit" class="boton-ingresar" id="boton-ingresar">Ingresar a mi Cuenta</button>
+            </form>
 
         </div>
 
+    </main>
+
+    <!-- MODAL ERROR -->
+    <div class="fondo-modal" id="modal-error" role="dialog" aria-modal="true" aria-labelledby="modal-error-titulo" hidden>
+        <div class="modal-caja">
+            <div class="modal-icono" aria-hidden="true">✕</div>
+            <h2 id="modal-error-titulo">Usuario o contraseña incorrectos.</h2>
+            <p class="gris" id="modal-error-texto">Intenta de nuevo.</p>
+            <button type="button" class="boton-ingresar" id="boton-reintentar">Intentar de nuevo</button>
+        </div>
     </div>
 
 </body>

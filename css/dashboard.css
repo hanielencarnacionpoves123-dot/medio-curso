@@ -1,0 +1,113 @@
+/* Estilos exclusivos del dashboard. Depende de css/estilos.css (variables y base). */
+
+.barra-superior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 24px;
+    background-color: var(--superficie);
+    border-bottom: 1px solid var(--borde);
+}
+
+.barra-superior .logo {
+    margin: 0;
+}
+
+.boton-salir {
+    padding: 10px 14px;
+    background-color: #393a42;
+    color: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boton-salir:hover {
+    background-color: var(--rojo);
+    border-color: var(--rojo);
+}
+
+.contenido {
+    width: 850px;
+    max-width: calc(100% - 28px);
+    margin: 0 auto;
+    padding: 28px 0 48px;
+}
+
+.contenido h1 {
+    margin: 0 0 4px;
+    font-size: 26px;
+}
+
+.contenido h2 {
+    margin: 28px 0 10px;
+    font-size: 18px;
+}
+
+/* Resumen */
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.tarjeta {
+    flex: 1;
+    min-width: 150px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.tarjeta .valor {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.etiqueta {
+    margin: 4px 0 0;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+/* Tabla de pedidos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--borde);
+}
+
+th {
+    background-color: var(--superficie-2);
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    .contenido {
+        padding: 20px 0 40px;
+    }
+
+    .barra-superior {
+        padding: 14px;
+    }
+}

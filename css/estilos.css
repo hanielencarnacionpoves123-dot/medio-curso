@@ -1,0 +1,237 @@
+:root {
+    --fondo: #1e1f24;
+    --superficie: #2b2c33;
+    --superficie-2: #2f3038;
+    --borde: #44454d;
+    --texto: #ffffff;
+    --texto-suave: #a0a0a8;
+    --rojo: #e53940;
+    --azul: #4a8de5;
+}
+
+/* display:flex sobre .contenedor ganaría al atributo hidden */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    background-color: var(--fondo);
+    font-family: Arial;
+    color: var(--texto);
+    margin: 0;
+}
+
+/* ===================== LOGIN ===================== */
+
+/* Caja grande: los 2 lados uno al lado del otro */
+.contenedor {
+    display: flex;
+    width: 850px;
+    margin: 40px auto;
+    background-color: #2b2c33;
+    border-radius: 15px;
+}
+
+/* Lado izquierdo: producto */
+.izquierda {
+    width: 50%;
+    margin: 15px;
+    padding: 25px;
+    background: linear-gradient(#f0f0f0, #8c8f96);   /* degradado de blanco a gris */
+    border-radius: 15px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #9a9ca3;
+}
+
+/* Reloj: el blanco de la foto se mezcla con el degradado */
+.reloj {
+    display: block;
+    width: 75%;
+    margin: auto;
+    mix-blend-mode: multiply;
+}
+
+.cuadro {
+    margin-top: -150px;          /* sube el cuadro encima del reloj */
+    position: relative;          /* hace que el cuadro quede por delante */
+    background-color: #2f3038;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.envios {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #2b2c33;
+}
+
+/* Lado derecho: formulario */
+.derecha {
+    width: 50%;
+    padding: 30px;
+}
+
+.gris {
+    color: #a0a0a8;
+}
+
+/* Botones de Google y Apple en una fila */
+.sociales {
+    display: flex;
+}
+
+.boton-social {
+    width: 50%;
+    margin: 5px;
+    padding: 12px;
+    background-color: #393a42;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boton-social:hover {
+    background-color: #4a4b55;
+}
+
+.separador {
+    text-align: center;
+    color: #8a8a92;
+    font-size: 12px;
+}
+
+/* Cajas de texto */
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+input {
+    display: block;
+    width: 90%;
+    padding: 12px;
+    margin-top: 6px;
+    background-color: #1f2025;
+    color: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input:focus-visible {
+    outline: 2px solid var(--azul);
+    outline-offset: 2px;
+}
+
+/* ===================== MODAL ERROR ===================== */
+.fondo-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(10, 10, 14, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-caja {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 30px 26px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    animation: modal-entrada 0.2s ease-out;
+}
+
+@keyframes modal-entrada {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.modal-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background-color: rgba(229, 57, 64, 0.15);
+    border: 2px solid var(--rojo);
+    color: var(--rojo);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.modal-caja h2 {
+    margin: 0 0 6px;
+    font-size: 18px;
+}
+
+.modal-caja .gris {
+    margin: 0 0 22px;
+}
+
+.modal-caja .boton-ingresar {
+    margin-top: 0;
+}
+
+/* ===================== BOTONES ===================== */
+.boton-ingresar {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background-color: var(--rojo);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boton-ingresar:hover:not(:disabled) {
+    background-color: #c62c33;
+}
+
+.boton-ingresar:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--azul);
+    outline-offset: 2px;
+}
+
+/* ===================== RESPONSIVE LOGIN ===================== */
+@media (max-width: 860px) {
+    .contenedor {
+        flex-direction: column;
+        width: auto;
+        margin: 20px 14px;
+    }
+
+    .izquierda,
+    .derecha {
+        width: auto;
+        box-sizing: border-box;
+    }
+
+    .cuadro {
+        margin-top: -90px;
+    }
+
+    input {
+        width: 100%;
+    }
+}
