@@ -1,0 +1,106 @@
+body {
+    background-color: #1e1f24;
+    font-family: Arial;
+    color: white;
+}
+
+/* Caja grande: los 2 lados uno al lado del otro */
+.contenedor {
+    display: flex;
+    width: 850px;
+    margin: 40px auto;
+    background-color: #2b2c33;
+    border-radius: 15px;
+}
+
+/* ===== LADO IZQUIERDO ===== */
+.izquierda {
+    width: 50%;
+    margin: 15px;
+    padding: 25px;
+    background: linear-gradient(#f0f0f0, #8c8f96);   /* degradado de blanco a gris */
+    border-radius: 15px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #9a9ca3;
+}
+
+/* Reloj: el blanco de la foto se mezcla con el degradado */
+.reloj {
+    display: block;
+    width: 75%;
+    margin: auto;
+    mix-blend-mode: multiply;
+}
+
+.cuadro {
+    margin-top: -150px;          /* sube el cuadro encima del reloj */
+    position: relative;          /* hace que el cuadro quede por delante */
+    background-color: #2f3038;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.envios {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #2b2c33;
+}
+
+/* ===== LADO DERECHO ===== */
+.derecha {
+    width: 50%;
+    padding: 30px;
+}
+
+.gris {
+    color: #a0a0a8;
+}
+
+/* Botones de Google y Apple en una fila */
+.sociales {
+    display: flex;
+}
+
+.boton-social {
+    width: 50%;
+    margin: 5px;
+    padding: 12px;
+    background-color: #393a42;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.separador {
+    text-align: center;
+    color: #8a8a92;
+    font-size: 12px;
+}
+
+/* Cajas de texto */
+input {
+    display: block;
+    width: 90%;
+    padding: 12px;
+    background-color: #1f2025;
+    color: white;
+    border: 1px solid #44454d;
+    border-radius: 10px;
+}
+
+/* Botón rojo */
+.boton-ingresar {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background-color: #e53940;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+}
