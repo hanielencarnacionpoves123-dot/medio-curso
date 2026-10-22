@@ -1,8 +1,3 @@
-/**
- * DASHBOARD - GLOBAL ERP (GRUPO B)
- * Control de navegación y cierre de sesión
- */
-
 const btnLogout = document.getElementById('btnLogout');
 const btnToggleMenu = document.getElementById('btnToggleMenu');
 const btnCloseSidebar = document.getElementById('btnCloseSidebar');

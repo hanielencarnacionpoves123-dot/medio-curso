@@ -1,8 +1,3 @@
-/**
- * LOGIN - VERTEX CORP (GRUPO B)
- * Validación de credenciales y control de interfaz
- */
-
 // 1. Credenciales correctas designadas
 const USUARIO_CORRECTO = 'haniel';
 const CLAVE_CORRECTA = 'haniel123';
@@ -37,7 +32,6 @@ function cerrarError() {
 
 btnReintentar.addEventListener('click', cerrarError);
 
-// Cerrar modal al hacer clic en el fondo oscuro
 modalError.addEventListener('click', (e) => {
   if (e.target === modalError) cerrarError();
 });
@@ -49,16 +43,13 @@ loginForm.addEventListener('submit', (e) => {
   const usuarioIngresado = usuarioInput.value.trim().toLowerCase();
   const claveIngresada = passwordInput.value.trim();
 
-  // Comprobar si el usuario y clave coinciden
   const esUsuarioValido = usuarioIngresado === USUARIO_CORRECTO || usuarioIngresado === `${USUARIO_CORRECTO}@vertex.com`;
   const esClaveValida = claveIngresada === CLAVE_CORRECTA;
 
   if (esUsuarioValido && esClaveValida) {
-    // Si la clave es correcta: pasar al Dashboard
     sessionStorage.setItem('usuario_activo', USUARIO_CORRECTO);
     window.location.href = 'dashboard.html';
   } else {
-    // Si la clave es incorrecta: mostrar alerta
     mostrarError();
   }
 });

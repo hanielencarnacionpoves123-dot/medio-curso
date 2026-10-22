@@ -1,4 +1,3 @@
-# Credenciales de Acceso - Grupo B (Vertex Corp / Global ERP)
-
+# Credenciales de Acceso
 - **Usuario:** haniel (o haniel@vertex.com)
 - **Contraseña:** haniel123
