@@ -1,33 +1,31 @@
-(function () {
-    'use strict';
+/**
+ * DASHBOARD - GLOBAL ERP (GRUPO B)
+ * Control de navegación y cierre de sesión
+ */
 
-    var USUARIO = 'haniel';
-    var SESION = 'velox_sesion';
-    var LOGIN = 'index.html';
+const btnLogout = document.getElementById('btnLogout');
+const btnToggleMenu = document.getElementById('btnToggleMenu');
+const btnCloseSidebar = document.getElementById('btnCloseSidebar');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
 
-    var dashboard = document.getElementById('vista-dashboard');
-    var botonSalir = document.getElementById('boton-salir');
+// 1. Cierre de sesión y retorno al login
+btnLogout.addEventListener('click', () => {
+  sessionStorage.removeItem('usuario_activo');
+  window.location.href = 'index.html';
+});
 
-    function haySesion() {
-        try {
-            return sessionStorage.getItem(SESION) === USUARIO;
-        } catch (e) {
-            return false;
-        }
-    }
+// 2. Control del menú lateral en pantallas pequeñas
+function abrirSidebar() {
+  sidebar.classList.add('open');
+  overlay.classList.add('active');
+}
 
-    // Protege la vista: sin sesión no se muestra el dashboard
-    if (!haySesion()) {
-        window.location.replace(LOGIN);
-        return;
-    }
+function cerrarSidebar() {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('active');
+}
 
-    dashboard.hidden = false;
-
-    botonSalir.addEventListener('click', function () {
-        try {
-            sessionStorage.removeItem(SESION);
-        } catch (e) { /* sin persistencia disponible */ }
-        window.location.href = LOGIN;
-    });
-})();
+btnToggleMenu.addEventListener('click', abrirSidebar);
+btnCloseSidebar.addEventListener('click', cerrarSidebar);
+overlay.addEventListener('click', cerrarSidebar);

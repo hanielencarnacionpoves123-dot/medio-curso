@@ -1,73 +1,64 @@
-(function () {
-    'use strict';
+/**
+ * LOGIN - VERTEX CORP (GRUPO B)
+ * Validación de credenciales y control de interfaz
+ */
 
-    var USUARIO = 'haniel';
-    var PASSWORD = 'hanielpoves123';
-    var SESION = 'velox_sesion';
-    var DESTINO = 'dashboard.html';
+// 1. Credenciales correctas designadas
+const USUARIO_CORRECTO = 'haniel';
+const CLAVE_CORRECTA = 'haniel123';
 
-    var form = document.getElementById('form-login');
-    var campoUsuario = document.getElementById('usuario');
-    var campoPassword = document.getElementById('password');
-    var botonIngresar = document.getElementById('boton-ingresar');
-    var modal = document.getElementById('modal-error');
-    var modalTitulo = document.getElementById('modal-error-titulo');
-    var modalTexto = document.getElementById('modal-error-texto');
-    var botonReintentar = document.getElementById('boton-reintentar');
+// 2. Elementos del DOM
+const loginForm = document.getElementById('loginForm');
+const usuarioInput = document.getElementById('usuario');
+const passwordInput = document.getElementById('password');
+const btnToggleEye = document.getElementById('btnToggleEye');
+const eyeIcon = document.getElementById('eyeIcon');
+const modalError = document.getElementById('modalError');
+const btnReintentar = document.getElementById('btnReintentar');
 
-    function abrirModal(titulo, texto) {
-        modalTitulo.textContent = titulo;
-        modalTexto.textContent = texto;
-        modal.hidden = false;
-        botonReintentar.focus();
-    }
+// 3. Función para ver/ocultar contraseña
+btnToggleEye.addEventListener('click', () => {
+  const esPassword = passwordInput.type === 'password';
+  passwordInput.type = esPassword ? 'text' : 'password';
+  eyeIcon.className = esPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+});
 
-    function cerrarModal() {
-        if (modal.hidden) return;
-        modal.hidden = true;
-        campoPassword.value = '';
-        campoPassword.focus();
-    }
+// 4. Funciones del Modal de Alerta
+function mostrarError() {
+  modalError.hidden = false;
+  btnReintentar.focus();
+}
 
-    form.addEventListener('submit', function (evento) {
-        evento.preventDefault();
+function cerrarError() {
+  modalError.hidden = true;
+  passwordInput.value = '';
+  passwordInput.focus();
+}
 
-        var usuario = campoUsuario.value.trim();
-        var password = campoPassword.value;
+btnReintentar.addEventListener('click', cerrarError);
 
-        if (!usuario || !password) {
-            abrirModal('Campos incompletos', 'Completa tu correo y tu contraseña para continuar.');
-            return;
-        }
+// Cerrar modal al hacer clic en el fondo oscuro
+modalError.addEventListener('click', (e) => {
+  if (e.target === modalError) cerrarError();
+});
 
-        botonIngresar.disabled = true;
-        botonIngresar.textContent = 'Verificando...';
+// 5. Validación del formulario al hacer submit
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-        window.setTimeout(function () {
-            botonIngresar.disabled = false;
-            botonIngresar.textContent = 'Ingresar a mi Cuenta';
+  const usuarioIngresado = usuarioInput.value.trim().toLowerCase();
+  const claveIngresada = passwordInput.value.trim();
 
-            var coincideUsuario = usuario.toLowerCase() === USUARIO || usuario.toLowerCase() === USUARIO + '@veloxmarket.com';
+  // Comprobar si el usuario y clave coinciden
+  const esUsuarioValido = usuarioIngresado === USUARIO_CORRECTO || usuarioIngresado === `${USUARIO_CORRECTO}@vertex.com`;
+  const esClaveValida = claveIngresada === CLAVE_CORRECTA;
 
-            if (coincideUsuario && password === PASSWORD) {
-                try {
-                    sessionStorage.setItem(SESION, USUARIO);
-                } catch (e) { /* modo privado: se continúa sin persistir */ }
-                window.location.href = DESTINO;
-            } else {
-                abrirModal('Usuario o contraseña incorrectos.', 'Intenta de nuevo.');
-            }
-        }, 400);
-    });
-
-    botonReintentar.addEventListener('click', cerrarModal);
-
-    // Clic en el fondo o tecla Escape cierran el modal
-    modal.addEventListener('click', function (evento) {
-        if (evento.target === modal) cerrarModal();
-    });
-
-    document.addEventListener('keydown', function (evento) {
-        if (evento.key === 'Escape' && !modal.hidden) cerrarModal();
-    });
-})();
+  if (esUsuarioValido && esClaveValida) {
+    // Si la clave es correcta: pasar al Dashboard
+    sessionStorage.setItem('usuario_activo', USUARIO_CORRECTO);
+    window.location.href = 'dashboard.html';
+  } else {
+    // Si la clave es incorrecta: mostrar alerta
+    mostrarError();
+  }
+});

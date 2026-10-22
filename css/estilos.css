@@ -1,237 +1,400 @@
+/* ==========================================================
+   ESTILOS - LOGIN VERTEX CORP (GRUPO B)
+   Carpeta: css/estilos.css
+   ========================================================== */
+
+/* 1. Variables y Reset */
 :root {
-    --fondo: #1e1f24;
-    --superficie: #2b2c33;
-    --superficie-2: #2f3038;
-    --borde: #44454d;
-    --texto: #ffffff;
-    --texto-suave: #a0a0a8;
-    --rojo: #e53940;
-    --azul: #4a8de5;
+  --bg-oscuro: #0f172a;
+  --bg-blanco: #ffffff;
+  --texto-principal: #111827;
+  --texto-secundario: #64748b;
+  --borde: #e2e8f0;
+  --primario: #0f172a;
+  --primario-hover: #1e293b;
+  --rojo: #ef4444;
+  --fuente: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* display:flex sobre .contenedor ganaría al atributo hidden */
-[hidden] {
-    display: none !important;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: var(--fondo);
-    font-family: Arial;
-    color: var(--texto);
-    margin: 0;
+  font-family: var(--fuente);
+  background-color: var(--bg-oscuro);
+  color: var(--texto-principal);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* ===================== LOGIN ===================== */
-
-/* Caja grande: los 2 lados uno al lado del otro */
-.contenedor {
-    display: flex;
-    width: 850px;
-    margin: 40px auto;
-    background-color: #2b2c33;
-    border-radius: 15px;
+/* 2. Contenedor y Tarjeta Principal */
+.login-container {
+  width: 100%;
+  max-width: 980px;
 }
 
-/* Lado izquierdo: producto */
-.izquierda {
-    width: 50%;
-    margin: 15px;
-    padding: 25px;
-    background: linear-gradient(#f0f0f0, #8c8f96);   /* degradado de blanco a gris */
-    border-radius: 15px;
+.login-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--bg-blanco);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  min-height: 580px;
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: #9a9ca3;
+/* 3. Lado Izquierdo: Formulario */
+.login-form-side {
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Reloj: el blanco de la foto se mezcla con el degradado */
-.reloj {
-    display: block;
-    width: 75%;
-    margin: auto;
-    mix-blend-mode: multiply;
+/* Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-.cuadro {
-    margin-top: -150px;          /* sube el cuadro encima del reloj */
-    position: relative;          /* hace que el cuadro quede por delante */
-    background-color: #2f3038;
-    padding: 15px;
-    border-radius: 12px;
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primario);
+  border-radius: 50%;
 }
 
-.envios {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #2b2c33;
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--primario);
 }
 
-/* Lado derecho: formulario */
-.derecha {
-    width: 50%;
-    padding: 30px;
+/* Encabezado */
+.form-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--texto-principal);
+  margin-bottom: 6px;
 }
 
-.gris {
-    color: #a0a0a8;
+.form-header p {
+  font-size: 0.9rem;
+  color: var(--texto-secundario);
+  margin-bottom: 24px;
 }
 
-/* Botones de Google y Apple en una fila */
-.sociales {
-    display: flex;
+/* Campos de entrada */
+.form-group {
+  margin-bottom: 16px;
 }
 
-.boton-social {
-    width: 50%;
-    margin: 5px;
-    padding: 12px;
-    background-color: #393a42;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
 }
 
-.boton-social:hover {
-    background-color: #4a4b55;
+.input-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 0 12px;
+  background-color: #ffffff;
 }
 
-.separador {
-    text-align: center;
-    color: #8a8a92;
-    font-size: 12px;
+.input-box:focus-within {
+  border-color: var(--primario);
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
 }
 
-/* Cajas de texto */
-label {
-    display: block;
-    margin-top: 15px;
+.input-box input {
+  width: 100%;
+  padding: 11px 0;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--texto-principal);
 }
 
-input {
-    display: block;
-    width: 90%;
-    padding: 12px;
-    margin-top: 6px;
-    background-color: #1f2025;
-    color: white;
-    border: 1px solid var(--borde);
-    border-radius: 10px;
-    box-sizing: border-box;
+.btn-eye {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input:focus-visible {
-    outline: 2px solid var(--azul);
-    outline-offset: 2px;
+.btn-eye svg {
+  width: 18px;
+  height: 18px;
 }
 
-/* ===================== MODAL ERROR ===================== */
-.fondo-modal {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(10, 10, 14, 0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 100;
+.btn-eye:hover {
+  color: var(--texto-principal);
 }
 
-.modal-caja {
-    width: 100%;
-    max-width: 380px;
-    background-color: var(--superficie);
-    border: 1px solid var(--borde);
-    border-radius: 16px;
-    padding: 30px 26px;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    animation: modal-entrada 0.2s ease-out;
+/* Opciones: recordar y recuperar */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  margin-bottom: 22px;
 }
 
-@keyframes modal-entrada {
-    from { opacity: 0; transform: scale(0.92); }
-    to   { opacity: 1; transform: scale(1); }
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #4b5563;
 }
 
-.modal-icono {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 54px;
-    height: 54px;
-    margin-bottom: 16px;
-    border-radius: 50%;
-    background-color: rgba(229, 57, 64, 0.15);
-    border: 2px solid var(--rojo);
-    color: var(--rojo);
-    font-size: 24px;
-    font-weight: bold;
+.forgot-link {
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.modal-caja h2 {
-    margin: 0 0 6px;
-    font-size: 18px;
+.forgot-link:hover {
+  text-decoration: underline;
 }
 
-.modal-caja .gris {
-    margin: 0 0 22px;
+/* Botón principal */
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primario);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.modal-caja .boton-ingresar {
-    margin-top: 0;
+.btn-submit:hover {
+  background-color: var(--primario-hover);
 }
 
-/* ===================== BOTONES ===================== */
-.boton-ingresar {
-    display: block;
-    width: 100%;
-    margin-top: 25px;
-    padding: 14px;
-    background-color: var(--rojo);
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+/* Separador */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 22px 0 16px;
 }
 
-.boton-ingresar:hover:not(:disabled) {
-    background-color: #c62c33;
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--borde);
 }
 
-.boton-ingresar:disabled {
-    opacity: 0.7;
-    cursor: wait;
+.divider span {
+  position: relative;
+  background-color: #ffffff;
+  padding: 0 10px;
+  font-size: 0.78rem;
+  color: var(--texto-secundario);
 }
 
-button:focus-visible {
-    outline: 2px solid var(--azul);
-    outline-offset: 2px;
+/* Redes sociales */
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-/* ===================== RESPONSIVE LOGIN ===================== */
-@media (max-width: 860px) {
-    .contenedor {
-        flex-direction: column;
-        width: auto;
-        margin: 20px 14px;
-    }
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
 
-    .izquierda,
-    .derecha {
-        width: auto;
-        box-sizing: border-box;
-    }
+.btn-social img {
+  width: 18px;
+  height: 18px;
+}
 
-    .cuadro {
-        margin-top: -90px;
-    }
+.btn-social:hover {
+  background-color: #f8fafc;
+}
 
-    input {
-        width: 100%;
-    }
+/* Pie del formulario */
+.form-footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--texto-secundario);
+  border-top: 1px solid #f1f5f9;
+  padding-top: 14px;
+}
+
+.form-footer a {
+  color: #334155;
+  text-decoration: none;
+}
+
+/* 4. Lado Derecho: Hero con Imagen Local */
+.login-hero-side {
+  position: relative;
+  background-color: #0b1120;
+  background-image: 
+    linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.95) 90%),
+    url('../img/edificio.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ffffff;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.ai-tag {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.7);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+.ai-tag svg {
+  width: 14px;
+  height: 14px;
+  color: #38bdf8;
+}
+
+/* 5. Modal de Error */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 360px;
+  padding: 28px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: 2.2rem;
+  color: var(--rojo);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+.modal-box h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.modal-box p {
+  font-size: 0.88rem;
+  color: var(--texto-secundario);
+  margin-bottom: 24px;
+}
+
+/* 6. Diseño Responsive */
+@media (max-width: 820px) {
+  .login-card {
+    grid-template-columns: 1fr;
+  }
+  .login-hero-side {
+    min-height: 220px;
+    padding: 24px;
+  }
+  .login-form-side {
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
 }
